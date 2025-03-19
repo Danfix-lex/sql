@@ -25,3 +25,6 @@ SELECT SUM(QuantityOnHand) FROM INVENTORY;
 SELECT MAX(QuantityOnHand) FROM INVENTORY;
 SELECT MIN(QuantityOnHand) FROM INVENTORY;
 SELECT AVG(QuantityOnHand) FROM INVENTORY;
+SELECT WarehouseID, SUM(QuantityOnHand) AS TotalItemsOnHand FROM INVENTORY GROUP BY WarehouseID ORDER BY TotalItemsOnHand DESC;
+SELECT WarehouseID, SUM(QuantityOnHand) AS TotalItemsOnHandLT3 FROM INVENTORY WHERE QuantityOnHand < 3 GROUP BY WarehouseID ORDER BY TotalItemsOnHandLT3 DESC;
+SELECT WarehouseID, SUM(QuantityOnHand) AS TotalItemsOnHandLT3 FROM INVENTORY WHERE QuantityOnHand < 3 GROUP BY WarehouseID HAVING COUNT(SKU) < 2 ORDER BY TotalItemsOnHandLT3 DESC;
